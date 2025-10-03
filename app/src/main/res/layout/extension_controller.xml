@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <eu.kanade.tachiyomi.widget.ThemedSwipeRefreshLayout
+        android:id="@+id/ext_swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/ext_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:listitem="@layout/extension_card_header" />
+
+    </eu.kanade.tachiyomi.widget.ThemedSwipeRefreshLayout>
+
+    <eu.davidea.fastscroller.FastScroller
+        android:id="@+id/fast_scroller"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:layoutDirection="ltr"
+        app:fastScrollerBubbleEnabled="false"
+        tools:visibility="visible" />
+
+</FrameLayout>

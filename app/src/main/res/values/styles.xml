@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!--========-->
+    <!--Toolbars-->
+    <!--========-->
+
+    <style name="Theme.Toolbar" parent="@style/ThemeOverlay.MaterialComponents.ActionBar" />
+
+    <style name="Theme.Toolbar.Red" parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/red</item>
+    </style>
+
+    <style name="Theme.Toolbar.FOOF" parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="android:textColorPrimary">@color/FOOF</item>
+    </style>
+
+    <style name="Theme.Toolbar.Light" parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="popupTheme">@style/ThemeOverlay.MaterialComponents.Light</item>
+    </style>
+
+    <style name="Theme.Toolbar.Navigation" parent="Widget.AppCompat.Toolbar.Button.Navigation">
+        <item name="tint">?attr/colorOnPrimary</item>
+    </style>
+
+    <style name="Theme.Toolbar.Fumo" parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="android:background">@color/fumo_primary</item>
+    </style>
+
+    <!--===========-->
+    <!--AlertDialog-->
+    <!--===========-->
+    <style name="Theme.AlertDialog" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:windowMinWidthMajor">@android:dimen/dialog_min_width_major</item>
+        <item name="android:windowMinWidthMinor">@android:dimen/dialog_min_width_minor</item>
+
+        <item name="android:background">?attr/colorSurface</item>
+        <item name="android:textColorPrimary">?attr/colorOnSurface</item>
+        <item name="android:textColor">?attr/colorOnSurface</item>
+
+        <item name="buttonBarPositiveButtonStyle">@style/Theme.Widget.Button</item>
+        <item name="buttonBarNegativeButtonStyle">@style/Theme.Widget.Button</item>
+        <item name="buttonBarNeutralButtonStyle">@style/Theme.Widget.Button</item>
+    </style>
+
+    <style name="Theme.AlertDialog.Light" parent="Theme.AlertDialog">
+        <item name="colorAccent">@color/colorAccentLight</item>
+    </style>
+
+    <style name="Theme.AlertDialog.Dark" parent="Theme.AlertDialog">
+        <item name="colorAccent">@color/colorAccentDark</item>
+    </style>
+
+    <style name="Theme.AlertDialog.Fumo" parent="Theme.AlertDialog">
+        <item name="colorAccent">@color/md_white_1000</item>
+        <item name="colorSurface">@color/fumo_primary</item>
+        <item name="colorOnSurface">@color/colorAccentLight</item>
+    </style>
+
+    <!--==============-->
+    <!--NavigationView-->
+    <!--==============-->
+
+    <style name="Theme.Widget.NavigationView" />
+
+    <style name="Theme.Widget.NavigationView.Light" >
+        <item name="colorPrimary">?colorAccent</item>
+        <item name="colorOnSurface">@color/md_black_1000</item>
+        <item name="android:backgroundTint">?colorSurface</item>
+        <item name="android:background">?colorSurface</item>
+    </style>
+
+    <style name="Theme.Widget.NavigationView.Blue" />
+
+    <style name="Theme.Widget.NavigationView.Dark">
+        <item name="colorControlHighlight">@color/md_grey_900</item>
+        <item name="colorPrimary">?colorAccent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="elevationOverlayEnabled">false</item>
+    </style>
+
+    <style name="Theme.Widget.NavigationView.Amoled">
+        <item name="colorPrimary">?colorAccent</item>
+        <item name="colorOnSurface">@color/md_grey_100</item>
+        <item name="android:backgroundTint">?colorSurface</item>
+        <item name="android:background">?colorSurface</item>
+    </style>
+
+    <style name="Theme.Widget.NavigationView.Red" parent="Theme.Widget.NavigationView.Amoled">
+        <item name="colorOnSurface">@color/red</item>
+    </style>
+    <style name="Theme.Widget.NavigationView.FOOF" parent="Theme.Widget.NavigationView.Light">
+        <item name="colorOnSurface">@color/FOOF</item>
+    </style>
+
+    <style name="Theme.Widget.NavigationView.Fumo" parent="Theme.Widget.NavigationView.Dark">
+        <item name="colorOnSurface">@color/md_white_1000</item>
+        <item name="android:backgroundTint">@color/fumo_primary</item>
+    </style>
+
+    <!--===============-->
+    <!--Text Appearance-->
+    <!--===============-->
+    <style name="TextAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">?android:attr/textColorPrimary</item>
+    </style>
+
+    <style name="TextAppearance.Regular">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <style name="TextAppearance.Regular.Body1">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Regular.Body1.Bold">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="TextAppearance.Regular.Body1.Secondary">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Regular.Caption">
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="TextAppearance.Regular.Caption.Hint">
+        <item name="android:textColor">@color/material_on_surface_emphasis_medium</item>
+    </style>
+
+    <style name="TextAppearance.Regular.SubHeading">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="TextAppearance.Regular.SubHeading.Upper">
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.Regular.SubHeading.Secondary">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Medium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Title">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Title.Upper">
+        <item name="android:textAllCaps">true</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Title.Secondary">
+        <item name="android:textColor">?android:attr/textColorSecondary</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Body2">
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="TextAppearance.Medium.Body2.Hint">
+        <item name="android:textColor">?android:attr/textColorHint</item>
+    </style>
+
+    <style name="TextAppearance.Widget.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:letterSpacing">0</item>
+    </style>
+
+    <style name="TextAppearance.Widget.Menu" parent="TextAppearance.AppCompat.Menu">
+        <item name="android:textColor">?attr/colorOnBackground</item>
+    </style>
+
+    <!--=======-->
+    <!--Widgets-->
+    <!--=======-->
+    <style name="Theme.Widget" />
+
+    <style name="Theme.Widget.FAB" parent="@style/Widget.MaterialComponents.FloatingActionButton">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="fabCustomSize">@dimen/fab_size</item>
+        <item name="android:layout_gravity">bottom|end</item>
+        <item name="android:layout_margin">@dimen/fab_margin</item>
+        <item name="android:scaleType">fitCenter</item>
+        <item name="layout_anchorGravity">bottom|right|end</item>
+    </style>
+
+    <style name="Theme.Widget.CardView" parent="CardView">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:padding">@dimen/material_component_cards_top_and_bottom_padding</item>
+        <item name="android:layout_marginTop">@dimen/material_component_cards_space_between_cards
+        </item>
+        <item name="android:layout_marginBottom">
+            @dimen/material_component_cards_space_between_cards
+        </item>
+        <item name="android:layout_marginStart">
+            @dimen/material_component_cards_space_between_cards
+        </item>
+        <item name="android:layout_marginEnd">@dimen/material_component_cards_space_between_cards
+        </item>
+        <item name="cardBackgroundColor">?attr/colorSurface</item>
+        <item name="cardCornerRadius">@dimen/card_radius</item>
+        <item name="cardElevation">2dp</item>
+    </style>
+
+    <style name="Theme.Widget.CardView.Item">
+        <item name="android:layout_marginTop">@dimen/space_between_cards</item>
+        <item name="android:layout_marginBottom">@dimen/space_between_cards</item>
+    </style>
+
+    <style name="Theme.Widget.GridView">
+        <item name="android:smoothScrollbar">true</item>
+        <item name="android:numColumns">auto_fit</item>
+        <item name="android:stretchMode">columnWidth</item>
+        <item name="android:scrollbarStyle">outsideOverlay</item>
+    </style>
+
+    <style name="Theme.Widget.GridView.Source">
+        <item name="android:padding">5dp</item>
+        <item name="android:gravity">top|left</item>
+        <item name="android:smoothScrollbar">true</item>
+        <item name="android:cacheColorHint">?android:attr/textColorHint</item>
+        <item name="android:fastScrollEnabled">true</item>
+        <item name="android:horizontalSpacing">0dp</item>
+        <item name="android:verticalSpacing">0dp</item>
+    </style>
+
+
+    <style name="Theme.Widget.SpinnerItem" parent="Widget.AppCompat.DropDownItem.Spinner">
+        <item name="android:textColor">?attr/colorOnSurface</item>
+        <item name="android:background">@drawable/list_item_selector</item>
+    </style>
+
+
+    <style name="Theme.Widget.Snackbar" parent="Widget.MaterialComponents.Snackbar">
+        <item name="android:background">@drawable/snackbar_bg</item>
+        <item name="android:textAppearance">@style/TextAppearance.Widget.Menu</item>
+        <item name="actionTextColorAlpha">1</item>
+    </style>
+
+
+    <style name="Theme.Widget.Chip" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipStrokeColor">?attr/colorAccent</item>
+        <item name="chipBackgroundColor">@android:color/transparent</item>
+        <item name="android:textColor">?attr/colorAccent</item>
+
+        <!-- Smaller text/height -->
+        <item name="chipCornerRadius">12dp</item>
+        <item name="chipMinHeight">24dp</item>
+        <item name="android:textAppearance">@style/TextAppearance.Regular.Caption</item>
+
+        <!-- Collapse horizontal margin -->
+        <item name="chipMinTouchTargetSize">30dp</item>
+    </style>
+
+
+    <style name="Theme.Widget.BasicSwitch" parent="Widget.MaterialComponents.CompoundButton.Switch">
+        <item name="useMaterialThemeColors">false</item>
+    </style>
+
+
+    <!--=======================-->
+    <!--Widgets.TextInputLayout-->
+    <!--=======================-->
+
+    <style name="ThemeOverlay.Widget.TextInputEditText.OutlinedBox" parent="ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox">
+        <item name="colorControlActivated">?attr/colorSecondary</item>
+    </style>
+
+    <style name="Theme.Widget.TextInputLayout.OutlinedBox" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Widget.TextInputEditText.OutlinedBox</item>
+        <item name="boxStrokeColor">@color/text_input_stroke</item>
+        <item name="hintTextColor">?attr/colorSecondary</item>
+    </style>
+
+    <style name="Theme.Widget.TextInputLayout.OutlinedBox.Dense" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/text_input_stroke</item>
+        <item name="hintTextColor">?attr/colorSecondary</item>
+    </style>
+
+
+    <!--==============-->
+    <!--Widgets.Button-->
+    <!--==============-->
+    <style name="Theme.Widget.Button" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="rippleColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="Theme.Widget.Button.Error" parent="Theme.Widget.Button">
+        <item name="android:textColor">?attr/colorError</item>
+        <item name="rippleColor">?attr/colorError</item>
+    </style>
+
+    <style name="Theme.Widget.Button.FilledAccent" parent="Widget.MaterialComponents.Button">
+        <item name="android:textColor">?attr/colorOnSecondary</item>
+        <item name="backgroundTint">?attr/colorAccent</item>
+        <item name="rippleColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="Theme.Widget.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:textColor">?attr/colorAccent</item>
+        <item name="rippleColor">?attr/colorAccent</item>
+    </style>
+
+    <style name="Theme.Widget.Button.Icon" parent="Widget.MaterialComponents.Button.OutlinedButton.Icon">
+        <item name="android:minHeight">0dp</item>
+        <item name="android:paddingBottom">4dp</item>
+
+        <item name="elevation">0dp</item>
+
+        <item name="android:textSize">12sp</item>
+        <item name="textAllCaps">false</item>
+        <item name="cornerRadius">16dp</item>
+
+        <item name="iconTint">?colorAccent</item>
+        <item name="rippleColor">?colorAccent</item>
+        <item name="android:textColor">?attr/colorOnBackground</item>
+    </style>
+
+    <style name="Theme.Widget.Button.Icon.Textless">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="iconPadding">0dp</item>
+        <item name="strokeWidth">0dp</item>
+    </style>
+
+
+    <!--=================-->
+    <!--Widgets.TabLayout-->
+    <!--=================-->
+    <style name="Theme.Widget.Tabs" parent="Widget.MaterialComponents.TabLayout.Colored">
+        <item name="tabGravity">start</item>
+        <item name="tabIndicator">@drawable/tab_indicator</item>
+        <item name="tabIndicatorFullWidth">false</item>
+        <item name="tabIndicatorHeight">3dp</item>
+        <item name="tabInlineLabel">true</item>
+        <item name="tabMinWidth">75dp</item>
+        <item name="tabMode">scrollable</item>
+    </style>
+
+
+    <!--===-->
+    <!--OLD-->
+    <!--===-->
+    <style name="FilePickerTheme">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorAccent">@color/colorAccentLight</item>
+        <item name="colorButtonNormal">@color/colorPrimary</item>
+        <item name="android:textSize">14sp</item>
+
+        <item name="alertDialogTheme">@style/FilePickerAlertDialogTheme</item>
+    </style>
+
+    <style name="FilePickerAlertDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert" />
+
+    <style name="SheetDialog" parent="Theme.Design.Light.BottomSheetDialog">
+        <!--<item name="android:windowCloseOnTouchOutside">false</item>-->
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorBackground">     @android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:backgroundDimAmount">0.3</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+</resources>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/action_edit_cover"
+        android:icon="@drawable/ic_edit_24dp"
+        android:title="@string/action_edit_cover"
+        app:iconTint="?attr/colorOnPrimary"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_move_to_category"
+        android:icon="@drawable/ic_label_24dp"
+        android:title="@string/action_move_category"
+        app:iconTint="?attr/colorOnPrimary"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_download_unread"
+        android:icon="@drawable/ic_get_app_24dp"
+        android:title="@string/action_download_unread"
+        app:iconTint="?attr/colorOnPrimary"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_mark_as_read"
+        android:icon="@drawable/ic_done_24dp"
+        android:title="@string/action_mark_as_read"
+        app:iconTint="?attr/colorOnPrimary"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_mark_as_unread"
+        android:icon="@drawable/ic_done_outline_24dp"
+        android:title="@string/action_mark_as_unread"
+        app:iconTint="?attr/colorOnPrimary"
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/action_delete"
+        android:icon="@drawable/ic_delete_24dp"
+        android:title="@string/action_delete"
+        app:iconTint="?attr/colorOnPrimary"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_select_all"
+        android:icon="@drawable/ic_select_all_24dp"
+        android:title="@string/action_select_all"
+        app:iconTint="?attr/colorOnPrimary"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_select_inverse"
+        android:icon="@drawable/ic_flip_to_back_24dp"
+        android:title="@string/action_select_inverse"
+        app:iconTint="?attr/colorOnPrimary"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_migrate"
+        android:icon="@drawable/baseline_swap_calls_24"
+        android:title="@string/label_migration"
+        app:iconTint="?attr/colorOnPrimary"
+        app:showAsAction="ifRoom" />
+
+</menu>

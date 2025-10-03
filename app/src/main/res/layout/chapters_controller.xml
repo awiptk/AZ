@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <eu.kanade.tachiyomi.widget.RevealAnimationView
+        android:id="@+id/reveal_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?attr/colorAccent"
+        android:elevation="5dp"
+        android:visibility="invisible" />
+
+    <eu.kanade.tachiyomi.widget.ThemedSwipeRefreshLayout
+        android:id="@+id/swipe_refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/toolbar_bottom"
+        android:orientation="vertical">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:clipToPadding="false"
+            android:descendantFocusability="afterDescendants"
+            android:paddingBottom="@dimen/fab_list_padding"
+            tools:listitem="@layout/chapters_item" />
+
+    </eu.kanade.tachiyomi.widget.ThemedSwipeRefreshLayout>
+
+    <eu.davidea.fastscroller.FastScroller
+        android:id="@+id/fast_scroller"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="right"
+        android:layoutDirection="ltr"
+        app:fastScrollerBubbleEnabled="false"
+        tools:visibility="visible" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/fab"
+        style="@style/Theme.Widget.FAB"
+        app:layout_anchor="@id/recycler"
+        app:srcCompat="@drawable/ic_play_arrow_24dp" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

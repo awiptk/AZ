@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/library_item_selector"
+    android:padding="4dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card"
+            android:layout_width="match_parent"
+            android:layout_height="220dp"
+            app:cardCornerRadius="@dimen/card_radius"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="?attr/colorSurface"
+                tools:ignore="ContentDescription"
+                tools:src="@mipmap/ic_launcher" />
+
+            <FrameLayout
+                android:id="@+id/play_layout"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_gravity="bottom|end"
+                android:clickable="true"
+                android:focusable="true"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageView
+                    android:id="@+id/play_button"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@drawable/round_play_background"
+                    android:contentDescription="@string/start_reading"
+                    android:padding="6dp"
+                    android:src="@drawable/ic_start_reading_24dp"
+                    android:tint="@android:color/white" />
+            </FrameLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/badges"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:layout_editor_absoluteX="7dp"
+                tools:layout_editor_absoluteY="7dp">
+
+                <TextView
+                    android:id="@+id/unread_text"
+                    style="@style/TextAppearance.Regular.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/colorAccentDark"
+                    android:paddingStart="3dp"
+                    android:paddingTop="1dp"
+                    android:paddingEnd="3dp"
+                    android:paddingBottom="1dp"
+                    android:textColor="@color/md_white_1000"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toEndOf="@+id/download_text"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="120"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/download_text"
+                    style="@style/TextAppearance.Regular.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/md_red_500"
+                    android:paddingStart="3dp"
+                    android:paddingTop="1dp"
+                    android:paddingEnd="3dp"
+                    android:paddingBottom="1dp"
+                    android:textColor="@color/md_white_1000"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toEndOf="@+id/local_text"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="120"
+                    tools:visibility="visible" />
+
+                <TextView
+                    android:id="@+id/local_text"
+                    style="@style/TextAppearance.Regular.Caption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@color/md_teal_500"
+                    android:paddingStart="3dp"
+                    android:paddingTop="1dp"
+                    android:paddingEnd="3dp"
+                    android:paddingBottom="1dp"
+                    android:text="@string/local_source_badge"
+                    android:textColor="@color/md_white_1000"
+                    android:visibility="gone"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:visibility="visible" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ProgressBar
+                android:id="@+id/progress"
+                style="?android:attr/progressBarStyleSmall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="gone" />
+
+        </androidx.cardview.widget.CardView>
+
+        <TextView
+            android:id="@+id/title"
+            style="@style/TextAppearance.Regular.Body1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:fontFamily="@font/ptsans_narrow_bold"
+            android:lineSpacingExtra="-4dp"
+            android:maxLines="2"
+            android:padding="4dp"
+            android:shadowColor="@color/textColorPrimaryLight"
+            android:textColor="?md_color_title"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/card"
+            tools:text="Sample name" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

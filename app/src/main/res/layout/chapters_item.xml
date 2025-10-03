@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="?android:attr/listPreferredItemHeight"
+    android:background="@drawable/list_item_selector"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp">
+
+    <TextView
+        android:id="@+id/chapter_title"
+        style="@style/TextAppearance.Regular.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:ellipsize="end"
+        android:maxLines="1"
+        tools:text="Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/chapter_menu"
+        android:layout_marginTop="12dp" />
+
+    <TextView
+        android:id="@+id/chapter_description"
+        style="@style/TextAppearance.Regular.Caption"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:ellipsize="end"
+        android:singleLine="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/download_text"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:text="22/02/2016 • Scanlator • Page: 45" />
+
+    <ImageButton
+        android:id="@+id/chapter_menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:background="?selectableItemBackgroundBorderless"
+        android:contentDescription="@string/action_menu"
+        android:padding="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/download_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_more_vert_24dp"
+        app:tint="?android:attr/textColorPrimary" />
+
+    <TextView
+        android:id="@+id/download_text"
+        style="@style/TextAppearance.Regular.Caption.Hint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="DOWNLOADED"
+        android:textAllCaps="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

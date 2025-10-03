@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="MinMaxNumberPicker">
+        <attr name="min" format="integer"/>
+        <attr name="max" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="NegativeSeekBar">
+        <attr name="min_seek" format="integer"/>
+        <attr name="max_seek" format="integer"/>
+    </declare-styleable>
+
+    <declare-styleable name="LimitedScrollView">
+        <attr name="max_height" format="integer" />
+    </declare-styleable>
+
+
+    <attr name="navigation_view_theme" format="reference"/>
+    <attr name="colorLibrarySelection" format="reference|integer"/>
+    <attr name="colorLibrarySelectionActive" format="reference|integer"/>
+    <attr name="colorFilterActive" format="reference|integer"/>
+    <attr name="colorBackgroundSplash" format="reference|integer"/>
+    <attr name="icon_color" format="reference|integer"/>
+    <attr name="md_color_compact_title" format="reference|integer"/>
+    <attr name="backgroundImage" format="reference|integer"/>
+    <attr name="mangaInfoBG" format="reference|integer"/>
+
+</resources>

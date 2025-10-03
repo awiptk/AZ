@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<changelog bulletedList="true">
+    <changelogversion versionName="v8.8.2-AZ" changeDate="">
+        <changelogtext>fix exh</changelogtext>
+        <changelogtext>remove user agent from nh</changelogtext>
+        <changelogtext>add option to hide "last used" source in sources screen</changelogtext>
+        <changelogtext>fix .gifs not animating with new image decoder</changelogtext>
+        <changelogtext>fix tracking status button not being clickable</changelogtext>
+        <changelogtext>fix viz extension (probably also fixes some image loading issues with other exts)</changelogtext>
+        <changelogtext>fix some galleries being missing on hitomi (probably also fixes json parsing issues in other sources)</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.8.1-AZ" changeDate="">
+        <changelogtext>Remove dead built-in sources (hbrowse, perveden)</changelogtext>
+        <changelogtext>Remove broken built-in sources (hitomi.la, 8muses), please use extensions instead</changelogtext>
+        <changelogtext>fix crashes in many extensions (danbooru, pixiv, some chinese exts, etc)</changelogtext>
+        <changelogtext>support new image formats (AVIF, HEIF/HEIC, JXL)</changelogtext>
+        <changelogtext>fix corrupt reader filter test image (thanks kenry)</changelogtext>
+        <changelogtext>fix automatic backup not deleting old files</changelogtext>
+        <changelogtext>fix extension preferences not applying correctly in multi-lang or multi-source exts</changelogtext>
+        <changelogtext>fix shizuku installing extensions to the wrong user on multi-user devices (thanks redjard)</changelogtext>
+        <changelogtext>improved keyboard/dpad navigation in chapter select (for my flip phone)</changelogtext>
+        <changelogtext>use .tachibk extension for backups instead of .proto.gz</changelogtext>
+        <changelogtext>fix missing "last used source" display in sources screen</changelogtext>
+        <changelogtext>remove default tachiyomi extension repo (its extensions are only for self-hosting anyway)</changelogtext>
+        <changelogtext>add intent for adding ext repos (repos can now be added with a single click on a website)</changelogtext>
+        <changelogtext>add error handling to repos (no longer fails to load all repos if only one errors)</changelogtext>
+        <changelogtext>change ExH icon to a sad panda (it was always supposed to be this way but i forgot)</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.8.0-AZ" changeDate="">
+        <changelogtext>Support non-github extension repo urls (.min.json)</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.7.5-AZ" changeDate="">
+        <changelogtext>fix cloudflare opening blob:urls in webview</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.7.4-AZ" changeDate="">
+        <changelogtext>added support for 1.4 extlib extensions</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.7.3-AZ" changeDate="">
+        <changelogtext>updated EH/EXH to their new pagination systems</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.7.2-AZ" changeDate="">
+        <changelogtext>add ability to change user agent in advanced settings</changelogtext>
+        <changelogtext>fix some small issues with the light theme</changelogtext>
+        <changelogtext>fix searching of tags containing spaces when tapping chips</changelogtext>
+        <changelogtext>update default UA for nH (now bypasses cloudflare)</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.7.1-AZ" changeDate="">
+        <changelogtext>Update webview (Fixes some cloudflare issues)</changelogtext>
+        <changelogtext>Fix the library search issue with tags containing "-" (searching "x-ray" no longer searches for "x -ray")</changelogtext>
+        <changelogtext>Fix tracking not working when reading chapters</changelogtext>
+        <changelogtext>ᗜˬᗜ</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.7.0-AZ" changeDate="">
+        <changelogtext>Add support for 1.3 extlib (this means extensions will work again)</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.6.8-AZ" changeDate="">
+        <changelogtext>Literally 1984, removed library refresh times below 12 hours. The Tachiyomi people required this.</changelogtext>
+        <changelogtext>tracker updates now queue up when offline and update on reconnect</changelogtext>
+        <changelogtext>added new extension installation system. There's an "update all" button now</changelogtext>
+        <changelogtext>some minor visual/ui bugfixes (thanks KraXen72)</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.6.6-AZ" changeDate="">
+        <changelogtext>fixed nhentai</changelogtext>
+        <changelogtext>fixed swipe gestures in the reader (Thanks KraXen72)</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.6.5-AZ" changeDate="">
+        <changelogtext>fixed a bunch of random extension issues</changelogtext>
+        <changelogtext>something about cloudflare idk</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.6.4-AZ" changeDate="">
+        <changelogtext>Fixed library update stopping halfway when an error is thrown fetching chapters</changelogtext>
+        <changelogtext>Added 1.x extension support</changelogtext>
+        <changelogtext>Added "Download all unread" and similar options when long pressing manga in library</changelogtext>
+        <changelogtext>Added smoothie theme (you really dont want to use it though, it's pink and yellow)</changelogtext>
+        <changelogtext>Fixed some bug with mangaplus</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.6.3-AZ" changeDate="">
+        <changelogtext>Whoops, this is a hotfix patch</changelogtext>
+        <changelogtext>Fixed crash when creating saved searches</changelogtext>
+        <changelogtext>Made continue reading button visibility setting take effect immediately</changelogtext>
+        <changelogtext>Made compact grid manga titles white on light theme</changelogtext>
+        <changelogtext>Some new reader modes were added, pl0x dont use them theyre not done and suck rn</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.6.2-AZ" changeDate="">
+        <changelogtext>MyAnimeList's login system has changed, please re-login.</changelogtext>
+        <changelogtext>This update is just bugfixes and minor features</changelogtext>
+        <changelogtext>added DNS over HTTPS option</changelogtext>
+        <changelogtext>added new, faster, offline backup system</changelogtext>
+        <changelogtext>added ability to download all unread directly from catalogue</changelogtext>
+        <changelogtext>added Red and Black theme</changelogtext>
+        <changelogtext>added continue reading button. Setting available in filter settings</changelogtext>
+        <changelogtext>added J2K auto background colour</changelogtext>
+        <changelogtext>re-added metadata only refresh</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.6.1-AZ" changeDate="">
+        <changelogtext>This entire update is just minor bugfixes</changelogtext>
+        <changelogtext>Fixed migration icon colours</changelogtext>
+        <changelogtext>Fix batch add for delegated sources</changelogtext>
+        <changelogtext>Fix batch add log display</changelogtext>
+        <changelogtext>Fix some pururin URL thing</changelogtext>
+        <changelogtext>Fix nhentai galleries with gifs</changelogtext>
+        <changelogtext>Fix hitomi.la</changelogtext>
+        <changelogtext>Fix mangaeden auto-captcha</changelogtext>
+        <changelogtext>Fix lollipop crash on start</changelogtext>
+        <changelogtext>Fix the hamburger back button animation</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.6.0-AZ" changeDate="">
+        <changelogtext>Manga recommendations</changelogtext>
+        <changelogtext>Fixed nhentai</changelogtext>
+        <changelogtext>added h-captcha to captcha detection</changelogtext>
+        <changelogtext>Comfortable grid viewing mode</changelogtext>
+        <changelogtext>Auto webtoon view switching</changelogtext>
+        <changelogtext>Concurrent downloading from different sources</changelogtext>
+        <changelogtext>Increased maximum saved searches (max 500)</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.5.0-AZ" changeDate="">
+        <changelogtext>Added merged sources</changelogtext>
+        <changelogtext>Splash screen</changelogtext>
+        <changelogtext>New themes</changelogtext>
+        <changelogtext>Download queue management</changelogtext>
+        <changelogtext>Continuous vertical reader mode</changelogtext>
+        <changelogtext>Hiding transition page fixed</changelogtext>
+        <changelogtext>Added J2K Automigration</changelogtext>
+        <changelogtext>Now nearly up to date with tachiyomi Dev, thanks syer</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.4.9-AZ" changeDate="">
+        <changelogtext>Such a good update it had to skip a version number</changelogtext>
+        <changelogtext>Fixed hitomi.la again</changelogtext>
+        <changelogtext>Delegated tsumino - Make sure to install the tsumino extension</changelogtext>
+        <changelogtext>App lock no longer requires usage access and should work better</changelogtext>
+        <changelogtext>Added drag and drop filtering, thanks jay</changelogtext>
+        <changelogtext>Fix hentaiCafe tags</changelogtext>
+        <changelogtext>Added Secure Screen</changelogtext>
+        <changelogtext>Lock no longer requires usage permission</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.4.7-AZ" changeDate="">
+        <changelogtext>Backups now restore in background</changelogtext>
+        <changelogtext>fixed hitomi.la</changelogtext>
+        <changelogtext>added search to read history</changelogtext>
+        <changelogtext>added language filtering to nhentai</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.4.6-AZ" changeDate="">
+        <changelogtext>MY FIRST REAL PROPER UPDATE</changelogtext>
+        <changelogtext>upgraded to androidx, this wont do anything for you but it was hard to do</changelogtext>
+        <changelogtext>tristate filters in library</changelogtext>
+        <changelogtext>tag searching now works on non-hentai manga</changelogtext>
+        <changelogtext>loading speed improvements when skipping through manga</changelogtext>
+        <changelogtext>search bar in sources settings</changelogtext>
+        <changelogtext>allow reordering downloads in queue</changelogtext>
+        <changelogtext>feature match with tachiyomi-dev</changelogtext>
+    </changelogversion>
+    <changelogversion versionName="v8.4.5-AZ" changeDate="">
+        <changelogtext>FUCK</changelogtext>
+        <changelogtext>FUCK</changelogtext>
+        <changelogtext>FUCK</changelogtext>
+        <changelogtext>FUCK</changelogtext>
+        <changelogtext>FUCK</changelogtext>
+        <changelogtext>FUCK</changelogtext>
+        <changelogtext>FUCK</changelogtext>
+        <changelogtext>aAAAAAAAAAAAaaAA</changelogtext>
+	<changelogtext>Fixed tsumino.</changelogtext>
+    </changelogversion>
+</changelog>

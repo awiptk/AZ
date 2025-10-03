@@ -1,0 +1,25 @@
+.gradle
+/local.properties
+/.idea/workspace.xml
+.DS_Store
+.idea/
+*iml
+*.iml
+/mainframer
+/.mainframer
+TODO.md
+CHANGELOG.md
+/captures
+build.sh
+test.sh
+
+# Built files
+*/build
+/build
+*.apk
+*.idsig
+app/**/output.json
+
+
+# Hebrew assets are copied on build
+app/src/main/res/values-iw/

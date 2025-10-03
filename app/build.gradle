@@ -1,0 +1,422 @@
+import org.jetbrains.kotlin.gradle.tasks.AbstractKotlinCompile
+//noinspection GradleDependency
+import java.text.SimpleDateFormat
+
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.android.gms.oss-licenses-plugin'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlinx-serialization'
+apply plugin: 'kotlin-parcelize'
+
+ext {
+    // Git is needed in your system PATH for these commands to work.
+    // If it's not installed, you can return a random value as a workaround
+    getCommitCount = {
+        return 'git rev-list --count HEAD'.execute().text.trim()
+        // return "1"
+    }
+
+    getGitSha = {
+        return 'git rev-parse --short HEAD'.execute().text.trim()
+        // return "1"
+    }
+
+    getBuildTime = {
+        def df = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm'Z'")
+        df.setTimeZone(TimeZone.getTimeZone("UTC"))
+        return df.format(new Date())
+    }
+}
+
+android {
+    compileSdkVersion 33
+    namespace "eu.kanade.tachiyomi"
+
+    defaultConfig {
+        applicationId "eu.kanade.tachiyomi.az"
+        minSdkVersion 21
+        targetSdkVersion 29
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        versionCode 8820
+        versionName "v8.8.2-AZ"
+
+        buildConfigField "String", "COMMIT_COUNT", "\"${getCommitCount()}\""
+        buildConfigField "String", "COMMIT_SHA", "\"${getGitSha()}\""
+        buildConfigField "String", "BUILD_TIME", "\"${getBuildTime()}\""
+        buildConfigField "boolean", "INCLUDE_UPDATER", "true"
+
+        multiDexEnabled true
+
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a", "x86"
+        }
+    }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
+    buildTypes {
+        debug {
+            versionNameSuffix "-${getCommitCount()}"
+            applicationIdSuffix ".debug"
+            ext.enableCrashlytics = false
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        releaseTest {
+            applicationIdSuffix ".rt"
+//            minifyEnabled true
+//            shrinkResources true
+//            zipAlignEnabled true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    flavorDimensions "default"
+
+    productFlavors {
+        standard {
+            buildConfigField "boolean", "INCLUDE_UPDATER", "true"
+            dimension "default"
+        }
+        dev {
+            resConfigs "en", "xxhdpi"
+            dimension "default"
+        }
+    }
+
+    compileOptions {
+        coreLibraryDesugaringEnabled true
+        sourceCompatibility 1.8
+        targetCompatibility 1.8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/*.kotlin_module'
+    }
+
+    dependenciesInfo {
+        includeInApk = false
+    }
+
+    lintOptions {
+        abortOnError false
+        checkReleaseBuilds false
+    }
+
+    compileOptions {
+        sourceCompatibility = 1.8
+        targetCompatibility = 1.8
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
+}
+
+kapt {
+    correctErrorTypes true
+}
+
+dependencies {
+    //desugaring
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs_nio:2.0.4'
+
+    // Anime dependencies (AZ)
+    //implementation 'com.google.android.exoplayer:exoplayer:2.12.2'
+
+
+    // Modified dependencies
+    implementation ('com.github.tachiyomiorg:subsampling-scale-image-view:7e57335') {
+        exclude module: 'image-decoder'
+    }
+
+    //compression dependencies
+    implementation 'com.github.junrar:junrar:7.5.5'
+    implementation ('org.apache.commons:commons-compress:1.24.0') {
+        //exclude module: 'commons-io'
+        //exclude module: 'commons-lang3'
+    }
+
+    // Android support library
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+
+    // Source models and interfaces from Tachiyomi 1.x
+    implementation 'org.tachiyomi:source-api:1.1'
+
+    // AndroidX libraries
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    //noinspection GradleDependency
+    implementation 'androidx.core:core-ktx:1.5.0-alpha01'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.preference:preference-ktx:1.1.1'
+    implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'androidx.browser:browser:1.3.0'
+    implementation 'androidx.multidex:multidex:2.0.1'
+
+    final lifecycle_version = '2.2.0'
+    implementation "androidx.lifecycle:lifecycle-common-java8:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycle_version"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
+
+    // UI library
+    implementation 'com.google.android.material:material:1.3.0'
+
+    standardImplementation 'com.google.firebase:firebase-core:18.0.2'
+
+    // ReactiveX
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.3.8'
+    implementation 'com.jakewharton.rxrelay:rxrelay:1.2.0'
+    implementation 'com.github.pwittchen:reactivenetwork:0.13.0'
+
+    // Network client
+    final okhttp_version = '5.0.0-alpha.12'
+    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    implementation "com.squareup.okhttp3:okhttp-dnsoverhttps:$okhttp_version"
+    implementation "com.squareup.okhttp3:okhttp-brotli:$okhttp_version"
+    implementation 'com.squareup.okio:okio:3.7.0'
+
+    // TLS 1.3 support for Android < 10
+    implementation 'org.conscrypt:conscrypt-android:2.4.0'
+
+    // REST
+    final retrofit_version = '2.9.0'
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava:$retrofit_version"
+
+    // JSON
+    final kotlin_serialization_version = '1.6.3'
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json:$kotlin_serialization_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-json-okio:$kotlin_serialization_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-protobuf:$kotlin_serialization_version"
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'com.github.salomonbrys.kotson:kotson:2.5.0'
+
+    // JavaScript engine
+    implementation 'com.squareup.duktape:duktape-android:1.4.0'
+    implementation 'app.cash.quickjs:quickjs-android:0.9.2'
+
+    // Disk
+    implementation 'com.jakewharton:disklrucache:2.0.2'
+    implementation 'com.github.inorichi:unifile:e9ee588'
+
+    // HTML parser
+    implementation 'org.jsoup:jsoup:1.14.3'
+
+    // Job scheduling
+    final work_version = '2.5.0'
+    implementation "androidx.work:work-runtime:$work_version"
+    implementation "androidx.work:work-runtime-ktx:$work_version"
+
+    // Android 7 SSL Workaround
+    implementation 'com.google.android.gms:play-services-safetynet:17.0.0'
+
+    // Changelog
+    implementation 'com.github.gabrielemariotti.changeloglib:changelog:2.1.0'
+
+    // Database
+    implementation 'androidx.sqlite:sqlite-ktx:2.1.0'
+    implementation 'com.github.inorichi.storio:storio-common:8be19de@aar'
+    implementation 'com.github.inorichi.storio:storio-sqlite:8be19de@aar'
+    implementation 'com.github.requery:sqlite-android:3.39.2'
+
+    // Preferences
+    implementation 'com.f2prateek.rx.preferences:rx-preferences:1.0.2'
+    implementation 'com.github.tfcporciuncula.flow-preferences:flow-preferences:1.3.3'
+
+    // Model View Presenter
+    final nucleus_version = '3.0.0'
+    implementation "info.android15.nucleus:nucleus:$nucleus_version"
+    implementation "info.android15.nucleus:nucleus-support-v7:$nucleus_version"
+
+    // Dependency injection
+    implementation "com.github.mihonapp:injekt:91edab2317"
+
+    // Image library
+    final glide_version = '4.16.0'
+    implementation "com.github.bumptech.glide:glide:$glide_version"
+    //implementation "com.github.bumptech.glide:avif-integration:$glide_version"
+    implementation "com.github.bumptech.glide:okhttp3-integration:$glide_version"
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    implementation "com.github.tachiyomiorg:image-decoder:398d3c074f"
+
+    // Logging
+    implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    // Crash reports
+    implementation 'ch.acra:acra:4.9.2'
+
+    // Sort
+    implementation 'com.github.gpanther:java-nat-sort:natural-comparator-1.1'
+
+    // UI
+    implementation 'com.github.DmitryMalkovich:material-design-dimens:1.4'
+    implementation 'com.github.dmytrodanylyk.android-process-button:library:1.0.4'
+    implementation 'com.github.arkon.FlexibleAdapter:flexible-adapter:c8013533'
+    implementation 'com.github.arkon.FlexibleAdapter:flexible-adapter-ui:c8013533'
+    implementation 'com.nightlynexus.viewstatepageradapter:viewstatepageradapter:1.1.0'
+    implementation 'com.github.mthli:Slice:v1.3'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+    implementation 'com.github.tachiyomiorg:DirectionalViewPager:7d0617d'
+
+    // 3.2.0+ introduces weird UI blinking or cut off issues on some devices.
+    final material_dialogs_version = '3.1.1'
+    implementation "com.afollestad.material-dialogs:core:$material_dialogs_version"
+    implementation "com.afollestad.material-dialogs:input:$material_dialogs_version"
+    implementation "com.afollestad.material-dialogs:datetime:$material_dialogs_version"
+
+    // Conductor
+    implementation 'com.bluelinelabs:conductor:2.1.5'
+    implementation("com.bluelinelabs:conductor-support:2.1.5") {
+        exclude group: "com.android.support"
+    }
+    implementation 'com.github.tachiyomiorg:conductor-support-preference:1.1.1'
+
+    // FlowBinding
+    final flowbinding_version = '0.11.1'
+    implementation "io.github.reactivecircus.flowbinding:flowbinding-android:$flowbinding_version"
+    implementation "io.github.reactivecircus.flowbinding:flowbinding-appcompat:$flowbinding_version"
+    implementation "io.github.reactivecircus.flowbinding:flowbinding-recyclerview:$flowbinding_version"
+    implementation "io.github.reactivecircus.flowbinding:flowbinding-swiperefreshlayout:$flowbinding_version"
+    implementation "io.github.reactivecircus.flowbinding:flowbinding-viewpager:$flowbinding_version"
+
+    // Shizuku
+    final shizukuVersion = '12.2.0'
+    implementation "dev.rikka.shizuku:api:$shizukuVersion"
+    implementation "dev.rikka.shizuku:provider:$shizukuVersion"
+
+    // Tests
+    testImplementation 'junit:junit:4.13'
+    testImplementation 'org.assertj:assertj-core:3.12.2'
+    testImplementation 'org.mockito:mockito-core:1.10.19'
+
+    final robolectric_version = '3.1.4'
+    testImplementation "org.robolectric:robolectric:$robolectric_version"
+    testImplementation "org.robolectric:shadows-multidex:$robolectric_version"
+    testImplementation "org.robolectric:shadows-play-services:$robolectric_version"
+
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-reflect:$kotlin_version"
+
+    final coroutines_version = '1.6.1'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-reactive:$coroutines_version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-rx2:$coroutines_version"
+
+    implementation 'com.google.android.gms:play-services-oss-licenses:17.0.1'
+
+    // Text distance
+    implementation 'info.debatty:java-string-similarity:1.2.1'
+
+    // Pin lock view
+    implementation 'com.github.jawnnypoo:pinlockview:2.2.0'
+
+    // Reprint
+    implementation 'com.github.ajalt.reprint:core:3.2.1@aar'
+    implementation 'com.github.ajalt.reprint:rxjava:3.2.1@aar' // optional: the RxJava 1 interface
+
+    // Swirl
+    implementation 'com.mattprecious.swirl:swirl:1.2.0'
+
+    // Firebase
+    implementation 'com.google.firebase:firebase-crashlytics:17.3.1'
+
+    // Better logging
+    implementation 'com.elvishew:xlog:1.6.1'
+
+    // Time utils
+    def typed_time_version = '1.0.2'
+    implementation "com.github.kizitonwose.time:time:$typed_time_version"
+    implementation "com.github.kizitonwose.time:time-android:$typed_time_version"
+
+    // Debug utils
+    debugImplementation 'com.ms-square:debugoverlay:1.1.3'
+    releaseTestImplementation 'com.ms-square:debugoverlay:1.1.3'
+    releaseImplementation 'com.ms-square:debugoverlay-no-op:1.1.3'
+    testImplementation 'com.ms-square:debugoverlay-no-op:1.1.3'
+
+    // Humanize
+    implementation 'com.github.mfornos:humanize-slim:1.2.2'
+
+    implementation 'androidx.gridlayout:gridlayout:1.0.0'
+
+    final def markwon_version = '4.1.0'
+
+    implementation "io.noties.markwon:core:$markwon_version"
+    implementation "io.noties.markwon:ext-strikethrough:$markwon_version"
+    implementation "io.noties.markwon:ext-tables:$markwon_version"
+    implementation "io.noties.markwon:html:$markwon_version"
+    implementation "io.noties.markwon:image:$markwon_version"
+    implementation "io.noties.markwon:linkify:$markwon_version"
+
+    implementation 'com.google.guava:guava:27.0.1-android'
+
+    // For detecting memory leaks; see https://square.github.io/leakcanary/
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.2'
+
+    // Debug tool; see https://fbflipper.com/
+//    debugImplementation 'com.facebook.flipper:flipper:0.49.0'
+//    debugImplementation 'com.facebook.soloader:soloader:0.9.0'
+}
+
+buildscript {
+    ext.kotlin_version = '1.9.22'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+    }
+}
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+// See https://kotlinlang.org/docs/reference/experimental.html#experimental-status-of-experimental-api-markers
+tasks.withType(AbstractKotlinCompile).all {
+    //kotlinOptions.freeCompilerArgs += ["-Xuse-experimental=kotlin.Experimental"]
+    //kotlinOptions.freeCompilerArgs += ["-opt-in=kotlin.RequiresOptIn"]
+    //kotlinOptions.freeCompilerArgs += ["-Xuse-experimental=kotlin.ExperimentalStdlibApi"]
+    //kotlinOptions.freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.FlowPreview"]
+    kotlinOptions.freeCompilerArgs += ["-opt-in=kotlinx.coroutines.ExperimentalCoroutinesApi"]
+    //kotlinOptions.freeCompilerArgs += ["-Xuse-experimental=kotlinx.coroutines.InternalCoroutinesApi"]
+    kotlinOptions.freeCompilerArgs += ["-opt-in=kotlinx.serialization.ExperimentalSerializationApi"]
+    //kotlinOptions.freeCompilerArgs += ["-Xuse-experimental=coil.annotation.ExperimentalCoilApi"]
+}
+
+// Duplicating Hebrew string assets due to some locale code issues on different devices
+task copyResources(type: Copy) {
+    from './src/main/res/values-he'
+    into './src/main/res/values-iw'
+    include '**/*'
+}
+
+preBuild.dependsOn(ktlintFormat, copyResources)
+
+if (getGradle().getStartParameter().getTaskRequests().toString().contains("Standard")) {
+    apply plugin: 'com.google.gms.google-services'
+    apply plugin: 'com.google.firebase.crashlytics'
+}
