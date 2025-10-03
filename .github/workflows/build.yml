@@ -1,0 +1,62 @@
+name: Build Debug APK
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_type:
+        description: 'Build Type'
+        required: true
+        default: 'debug'
+        type: choice
+        options:
+        - debug
+        - release
+      upload_artifact:
+        description: 'Upload APK as artifact'
+        required: true
+        default: true
+        type: boolean
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout kode
+      uses: actions/checkout@v4
+
+    - name: Setup JDK 17
+      uses: actions/setup-java@v4
+      with:
+        java-version: '17'
+        distribution: 'temurin'
+
+    - name: Setup Android SDK
+      uses: android-actions/setup-android@v3
+
+    - name: Buat gradle wrapper executable
+      run: chmod +x ./gradlew
+
+    - name: Build APK
+      run: |
+        if [ "${{ github.event.inputs.build_type }}" = "release" ]; then
+          ./gradlew assembleRelease
+        else
+          ./gradlew assembleDebug
+        fi
+
+    - name: Upload APK
+      if: ${{ github.event.inputs.upload_artifact == 'true' }}
+      uses: actions/upload-artifact@v4
+      with:
+        name: ${{ github.event.inputs.build_type }}-apk
+        path: |
+          app/build/outputs/apk/debug/*.apk
+          app/build/outputs/apk/release/*.apk
+        retention-days: 7
+
+    - name: Show Build Info
+      run: |
+        echo "Build completed successfully!"
+        echo "Build type: ${{ github.event.inputs.build_type }}"
+        echo "APK files generated in: app/build/outputs/apk/"
