@@ -21,15 +21,6 @@ import eu.kanade.tachiyomi.data.database.queries.HistoryQueries
 import eu.kanade.tachiyomi.data.database.queries.MangaCategoryQueries
 import eu.kanade.tachiyomi.data.database.queries.MangaQueries
 import eu.kanade.tachiyomi.data.database.queries.TrackQueries
-import exh.metadata.sql.mappers.SearchMetadataTypeMapping
-import exh.metadata.sql.mappers.SearchTagTypeMapping
-import exh.metadata.sql.mappers.SearchTitleTypeMapping
-import exh.metadata.sql.models.SearchMetadata
-import exh.metadata.sql.models.SearchTag
-import exh.metadata.sql.models.SearchTitle
-import exh.metadata.sql.queries.SearchMetadataQueries
-import exh.metadata.sql.queries.SearchTagQueries
-import exh.metadata.sql.queries.SearchTitleQueries
 import io.requery.android.database.sqlite.RequerySQLiteOpenHelperFactory
 
 /**
@@ -41,10 +32,7 @@ open class DatabaseHelper(context: Context) :
     TrackQueries,
     CategoryQueries,
     MangaCategoryQueries,
-    HistoryQueries,
-    SearchMetadataQueries,
-    SearchTagQueries,
-    SearchTitleQueries {
+    HistoryQueries {
     private val configuration =
         SupportSQLiteOpenHelper.Configuration.builder(context)
             .name(DbOpenCallback.DATABASE_NAME)
@@ -59,13 +47,10 @@ open class DatabaseHelper(context: Context) :
             .addTypeMapping(Track::class.java, TrackTypeMapping())
             .addTypeMapping(Category::class.java, CategoryTypeMapping())
             .addTypeMapping(MangaCategory::class.java, MangaCategoryTypeMapping())
-            .addTypeMapping(SearchMetadata::class.java, SearchMetadataTypeMapping())
             .addTypeMapping(History::class.java, HistoryTypeMapping())
-            .addTypeMapping(SearchTag::class.java, SearchTagTypeMapping())
-            .addTypeMapping(SearchTitle::class.java, SearchTitleTypeMapping())
             .build()
 
     inline fun inTransaction(block: () -> Unit) = db.inTransaction(block)
 
     fun lowLevel() = db.lowLevel()
-}
+    }
