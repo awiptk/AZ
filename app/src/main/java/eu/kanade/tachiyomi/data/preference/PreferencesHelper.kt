@@ -198,7 +198,6 @@ class PreferencesHelper(val context: Context) {
 
     fun unreadBadge() = flowPrefs.getBoolean(Keys.unreadBadge, true)
 
-    // J2K converted from boolean to integer
     fun filterDownloaded() = flowPrefs.getInt(Keys.filterDownloaded, 0)
 
     fun filterUnread() = flowPrefs.getInt(Keys.filterUnread, 0)
@@ -206,8 +205,6 @@ class PreferencesHelper(val context: Context) {
     fun filterCompleted() = flowPrefs.getInt(Keys.filterCompleted, 0)
 
     fun filterTracked() = flowPrefs.getInt(Keys.filterTracked, 0)
-
-    fun filterLewd() = flowPrefs.getInt(Keys.filterLewd, 0)
 
     fun librarySortingMode() = flowPrefs.getInt(Keys.librarySortingMode, 0)
 
@@ -259,8 +256,6 @@ class PreferencesHelper(val context: Context) {
             "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.124 Safari/537.36 Edg/102.0.1245.44"
         )
 
-    // --> AZ J2K CHERRYPICKING
-
     fun defaultMangaOrder() = flowPrefs.getString("default_manga_order", "")
 
     fun migrationSources() = flowPrefs.getString("migrate_sources", "")
@@ -279,127 +274,6 @@ class PreferencesHelper(val context: Context) {
         filterUnread().set(if (filterUn) 1 else 0)
         filterCompleted().set(if (filterCm) 1 else 0)
     }
-
-    // <--
-
-    // --> EH
-    fun eh_isHentaiEnabled() = flowPrefs.getBoolean(Keys.eh_is_hentai_enabled, true)
-
-    fun enableExhentai() = flowPrefs.getBoolean(Keys.eh_enableExHentai, false)
-
-    fun secureEXH() = flowPrefs.getBoolean(Keys.eh_secure_exh, true)
-
-    fun imageQuality() = flowPrefs.getString(Keys.eh_ehentai_quality, "auto")
-
-    fun useHentaiAtHome() = flowPrefs.getInt(Keys.eh_enable_hah, 0)
-
-    fun useJapaneseTitle() = flowPrefs.getBoolean("use_jp_title", false)
-
-    fun eh_useOriginalImages() = flowPrefs.getBoolean(Keys.eh_useOrigImages, false)
-
-    fun ehTagFilterValue() = flowPrefs.getInt(Keys.eh_tag_filtering_value, 0)
-
-    fun ehTagWatchingValue() = flowPrefs.getInt(Keys.eh_tag_watching_value, 0)
-
-    fun ehSearchSize() = flowPrefs.getString("ex_search_size", "rc_0")
-
-    fun thumbnailRows() = flowPrefs.getString("ex_thumb_rows", "tr_2")
-
-    fun hasPerformedURLMigration() = flowPrefs.getBoolean("performed_url_migration", false)
-
-    // EH Cookies
-    fun memberIdVal() = flowPrefs.getString("eh_ipb_member_id", "")
-
-    fun passHashVal() = flowPrefs.getString("eh_ipb_pass_hash", "")
-
-    fun igneousVal() = flowPrefs.getString("eh_igneous", "")
-
-    fun eh_ehSettingsProfile() = flowPrefs.getInt(Keys.eh_ehSettingsProfile, -1)
-
-    fun eh_exhSettingsProfile() = flowPrefs.getInt(Keys.eh_exhSettingsProfile, -1)
-
-    fun eh_settingsKey() = flowPrefs.getString(Keys.eh_settingsKey, "")
-
-    fun eh_sessionCookie() = flowPrefs.getString(Keys.eh_sessionCookie, "")
-
-    fun eh_hathPerksCookies() = flowPrefs.getString(Keys.eh_hathPerksCookie, "")
-
-    // Lock
-    fun eh_lockHash() = flowPrefs.getString(Keys.eh_lock_hash, "")
-
-    fun eh_lockSalt() = flowPrefs.getString(Keys.eh_lock_salt, "")
-
-    fun eh_lockLength() = flowPrefs.getInt(Keys.eh_lock_length, -1)
-
-    fun eh_lockUseFingerprint() = flowPrefs.getBoolean(Keys.eh_lock_finger, false)
-
-    fun eh_lockManually() = flowPrefs.getBoolean(Keys.eh_lock_manually, false)
-
-    fun eh_nh_useHighQualityThumbs() = flowPrefs.getBoolean(Keys.eh_nh_useHighQualityThumbs, false)
-
-    fun eh_showSyncIntro() = flowPrefs.getBoolean(Keys.eh_showSyncIntro, true)
-
-    fun eh_readOnlySync() = flowPrefs.getBoolean(Keys.eh_readOnlySync, false)
-
-    fun eh_lenientSync() = flowPrefs.getBoolean(Keys.eh_lenientSync, false)
-
-    fun eh_ts_aspNetCookie() = flowPrefs.getString(Keys.eh_ts_aspNetCookie, "")
-
-    fun eh_showSettingsUploadWarning() = flowPrefs.getBoolean(Keys.eh_showSettingsUploadWarning, true)
-
-    fun eh_expandFilters() = flowPrefs.getBoolean(Keys.eh_expandFilters, false)
-
-    fun eh_readerThreads() = flowPrefs.getInt(Keys.eh_readerThreads, 2)
-
-    fun eh_readerInstantRetry() = flowPrefs.getBoolean(Keys.eh_readerInstantRetry, true)
-
-    fun eh_utilAutoscrollInterval() = flowPrefs.getFloat(Keys.eh_utilAutoscrollInterval, 3f)
-
-    fun eh_cacheSize() = flowPrefs.getString(Keys.eh_cacheSize, "75")
-
-    fun eh_preserveReadingPosition() = rxPrefs.getBoolean(Keys.eh_preserveReadingPosition, false)
-
-    fun eh_autoSolveCaptchas() = flowPrefs.getBoolean(Keys.eh_autoSolveCaptchas, false)
-
-    fun eh_delegateSources() = flowPrefs.getBoolean(Keys.eh_delegateSources, true)
-
-    fun eh_lastVersionCode() = flowPrefs.getInt("eh_last_version_code", 0)
-
-    fun eh_savedSearches() = flowPrefs.getStringSet("eh_saved_searches", emptySet())
-
-    fun eh_logLevel() = flowPrefs.getInt(Keys.eh_logLevel, 0)
-
-    fun eh_enableSourceBlacklist() = flowPrefs.getBoolean(Keys.eh_enableSourceBlacklist, true)
-
-    fun eh_autoUpdateFrequency() = flowPrefs.getInt(Keys.eh_autoUpdateFrequency, 1)
-
-    fun eh_autoUpdateRequirements() = prefs.getStringSet(Keys.eh_autoUpdateRestrictions, emptySet())
-
-    fun eh_autoUpdateStats() = flowPrefs.getString(Keys.eh_autoUpdateStats, "")
-
-    fun eh_aggressivePageLoading() = flowPrefs.getBoolean(Keys.eh_aggressivePageLoading, false)
-
-    fun eh_hl_useHighQualityThumbs() = flowPrefs.getBoolean(Keys.eh_hl_useHighQualityThumbs, false)
-
-    fun eh_library_corner_radius() = flowPrefs.getInt(Keys.eh_library_rounded_corners, 4)
-
-    fun eh_preload_size() = flowPrefs.getInt(Keys.eh_preload_size, 4)
-
-    fun eh_useAutoWebtoon() = flowPrefs.getBoolean(Keys.eh_use_auto_webtoon, true)
-
-    fun eh_watchedListDefaultState() = flowPrefs.getBoolean(Keys.eh_watched_list_default_state, false)
-
-    fun eh_settingsLanguages() =
-        flowPrefs.getString(
-            Keys.eh_settings_languages,
-            "false*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false\nfalse*false*false"
-        )
-
-    fun eh_EnabledCategories() =
-        flowPrefs.getString(
-            Keys.eh_enabled_categories,
-            "false,false,false,false,false,false,false,false,false,false"
-        )
 
     fun startReadingButton() = flowPrefs.getBoolean(Keys.startReadingButton, true)
 
